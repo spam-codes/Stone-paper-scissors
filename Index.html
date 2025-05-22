@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stone Paper Scissors</title>
+  <style>
+    body {
+      background: #1e1e2f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #00e5ff;
+      margin-bottom: 30px;
+    }
+    button {
+      background: #333;
+      color: white;
+      font-size: 18px;
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #00e5ff;
+      color: black;
+    }
+    #result {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Stone Paper Scissors</h1>
+  <button onclick="play('stone')">Stone</button>
+  <button onclick="play('paper')">Paper</button>
+  <button onclick="play('scissors')">Scissors</button>
+
+  <div id="result"></div>
+
+  <script>
+    function play(userChoice) {
+      const choices = ['stone', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+      let result = `You chose ${userChoice}, Computer chose ${computerChoice}. `;
+
+      if (userChoice === computerChoice) {
+        result += "It's a Tie!";
+      } else if (
+        (userChoice === 'stone' && computerChoice === 'scissors') ||
+        (userChoice === 'paper' && computerChoice === 'stone') ||
+        (userChoice === 'scissors' && computerChoice === 'paper')
+      ) {
+        result += "You Win!";
+      } else {
+        result += "You Lose!";
+      }
+
+      document.getElementById('result').innerText = result;
+    }
+  </script>
+</body>
+</html>
